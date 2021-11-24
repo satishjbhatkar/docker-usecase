@@ -1,0 +1,20 @@
+version: '2'
+services:
+  api-mongodb:
+    image: mongo:latest
+    container_name: "api-mongodb"
+    ports:
+      - 27017:27017
+  config-client:
+    image: client-config:1.0
+    container_name: client-config
+    ports:
+      - '9090:9090'
+    depends_on:
+      - config-server
+      - api-mongodb
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
+    ports:
+      - '8888:8888'

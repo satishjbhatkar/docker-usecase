@@ -1,0 +1,13 @@
+FROM openjdk:8-jdk-alpine
+ADD target/spring-config-client-0.0.1-SNAPSHOT.jar app.jar
+# Add hello scripts
+ADD sayhello /sayhello
+RUN chmod +x /sayhello
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
+EXPOSE 9090
+EXPOSE 80
+EXPOSE 443
+ENTRYPOINT ["java","-jar","app.jar"]
+CMD ["/sayhello"]

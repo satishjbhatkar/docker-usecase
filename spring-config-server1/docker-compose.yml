@@ -1,0 +1,22 @@
+version: "3"
+services:
+  config-client:
+    image: config-client:1.0
+    container_name: config-client
+    ports:
+      - '9090:9090'
+    depends_on:
+     -config-server
+    networks:
+      - config-center
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
+    ports:
+      - '8888:8888'
+    networks:
+      - config-center
+networks:
+  config-center:
+
+

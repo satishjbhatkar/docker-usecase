@@ -1,0 +1,6 @@
+com\howtodoinjava\example\springconfigclient\SpringConfigClientApplication.class
+com\howtodoinjava\example\springconfigclient\DepModel.class
+com\howtodoinjava\example\springconfigclient\DepModel$DepModelBuilder.class
+com\howtodoinjava\example\springconfigclient\DepRepo.class
+com\howtodoinjava\example\springconfigclient\MessageRestController.class
+com\howtodoinjava\example\springconfigclient\DepReq.class

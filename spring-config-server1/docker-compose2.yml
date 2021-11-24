@@ -1,0 +1,30 @@
+version: '3'
+services:
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/satishjbhatkar/config-git-repo
+    ports:
+      - '8888:8888'
+    networks:
+      - config-center
+
+  config-client:
+    image: config-client:1.0
+    container_name: config-client
+    environment:
+      - SPRING_PROFILES_ACTIVE:development
+      - spring.config.import=optional:configserver:http://config-server:8888
+    ports:
+      - '9090:9090'
+    depends_on:
+      - config-server
+    networks:
+      - config-center
+networks:
+  config-center:
+volumes:
+  configvolume:
+
+
