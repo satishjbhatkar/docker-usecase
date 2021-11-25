@@ -1,8 +1,10 @@
-version: '2'
+version: '3'
 services:
   api-mongodb:
     image: mongo:latest
     container_name: "api-mongodb"
+    volumes:
+    - mongodbdata:/data/db
     ports:
       - 27017:27017
   config-client:
@@ -26,3 +28,5 @@ services:
     container_name: config-server
     ports:
       - '8888:8888'
+volumes:
+  mongodbdata:
